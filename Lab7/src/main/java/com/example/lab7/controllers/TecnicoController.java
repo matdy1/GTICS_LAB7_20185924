@@ -39,9 +39,9 @@ public class TecnicoController {
                                   @ModelAttribute("tecnico") @Valid Tecnicos tecnicos, BindingResult bindingResult) {
         if (!bindingResult.hasErrors()) { //si no hay errores, se realiza el flujo normal
             if (tecnicos.getId() == 0) {
-                attr.addFlashAttribute("msg", "Producto creado exitosamente");
+                attr.addFlashAttribute("msg", "Tecnico"+ " "+tecnicos.getFirstName() +" " + tecnicos.getLastName()+" " + "creado exitosamente");
             } else {
-                attr.addFlashAttribute("msg", "Producto actualizado exitosamente");
+                attr.addFlashAttribute("msg", "Tecnico"+" " + tecnicos.getFirstName()+" " + tecnicos.getLastName()+ " " +"actualizado exitosamente");
             }
             tecnicoRepositorio.save(tecnicos);
             return "redirect:/tecnico";
