@@ -5,36 +5,33 @@
         <main>
             <div class="container px-4 pb-5">
                 <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Product')}"></nav>
-                <h1 class="pb-2 border-bottom">Lista Productos</h1>
-                <a class="btn btn-primary mt-4 mb-4" th:href="@{'/product/new'}">Nuevo Producto</a>
+                <h1 class="pb-2 border-bottom">Lista Tecnicos</h1>
+                <div class="alert alert-success" role="alert" th:if="${msg != null}" th:text="${msg}">
+                    A simple success alert—check it out!
+                </div>
+                <a class="btn btn-primary mt-4 mb-4" th:href="@{'/tecnico/new'}">Nuevo Tecnico</a>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Product Name</th>
-                            <th>Categoría</th>
-                            <th>Proveedor</th>
-                            <th>Precio Unitario</th>
-                            <th>Stock</th>
-                            <th>¿Descontinuado?</th>
-                            <th></th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Dni</th>
+                            <th>Telefono</th>
+                            <th>Edad</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="product, info : ${listaProductos}">
+                        <tr th:each="tecnico, info : ${listaTecnico}">
                             <td th:text="${info.index + 1}"></td>
-                            <td th:text="${product.productname}"></td>
-                            <td th:text="${product.category.categoryname}"></td>
-                            <td th:text="${product.supplier.companyname}"></td>
-                            <td th:text="${product.unitprice}"></td>
-                            <td th:text="${product.unitsinstock}"></td>
-                            <td th:text="${product.discontinued?'si':'no'}"></td>
+                            <td th:text="${tecnico.firstName}"></td>
+                            <td th:text="${tecnico.getLastName()}"></td>
+                            <td th:text="${tecnico.getDNI()}"></td>
+                            <td th:text="${tecnico.getPhone()}"></td>
+                            <td th:text="${tecnico.getEdad()}"></td>
                             <td><a class="btn btn-primary"
-                                   th:href="@{'/product/edit' + '?id=' + ${product.id}}">Editar</a>
-                            </td>
-                            <td><a class="btn btn-danger"
-                                   th:href="@{'/product/delete' + '?id=' + ${product.id}}">Borrar</a>
+                                   th:href="@{'/tecnico/edit' + '?id=' + ${tecnico.id}}">Editar</a>
                             </td>
                         </tr>
                     </tbody>

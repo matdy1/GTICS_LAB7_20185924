@@ -6,76 +6,55 @@
             <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Product')}"></nav>
             <div class="row mb-4">
                 <div class="col-md-6 offset-md-3">
-                    <h2 th:text="${product.id==0? 'Nuevo Producto':'Editar Producto'}">Editar Producto</h2>
+                    <h2 th:text="${tecnico.id==0? 'Nuevo Tecnico':'Editar Tecnico'}">Editar Producto</h2>
                     <hr/>
-                    <div class="alert alert-danger" role="alert" th:if="${msg != null}" th:text="${msg}">
-                        A simple success alert—check it out!
-                    </div>
-                    <form method="post" th:action="@{'/product/save'}" th:object="${product}">
+                    <form method="post" th:action="@{'/tecnico/save'}" th:object="${tecnico}">
                         <input th:field="*{id}" type="hidden"/>
                         <div class="mb-3">
-                            <label class="form-label">Nombre del Producto</label>
-                            <input th:field="*{productname}" type="text" class="form-control"
-                                   th:classappend="${#fields.hasErrors('productname')?'is-invalid':''}"/>
-                            <div id="validationServer03Feedback" class="invalid-feedback"
-                                 th:if="${#fields.hasErrors('productname')}" th:errors="*{productname}">
-                                Mensaje de error de productName
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Proveedor</label>
-                            <select class="form-select" name="supplier" th:field="*{supplier}">
-                                <option th:each="supplier : ${listaProveedores}" th:value="${supplier.id}"
-                                        th:text="${supplier.companyname}"></option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Categoría</label>
-                            <select class="form-select" name="category" th:field="*{category}">
-                                <option th:each="categoria : ${listaCategorias}" th:value="${categoria.id}"
-                                        th:text="${categoria.categoryname}"></option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Cantidad por unidad</label>
-                            <input th:field="*{quantityperunit}" type="text" class="form-control"/>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Precio unitario</label>
-                            <input th:field="*{unitprice}" type="text" th:class="${#fields.hasErrors('unitprice')?'form-control is-invalid':'form-control'}"/>
+                            <label class="form-label">Nombre Tecnico</label>
+                            <input th:field="*{firstName}" type="text" class="form-control"
+                                   th:classappend="${#fields.hasErrors('firstName')?'is-invalid':''}"/>
                             <div class="invalid-feedback"
-                                 th:if="${#fields.hasErrors('unitprice')}" th:errors="*{unitprice}">
+                                 th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
                                 Mensaje de error de productName
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Unidades en stock</label>
-                            <input th:field="*{unitsinstock}" type="number" th:class="${#fields.hasErrors('unitsinstock')?'form-control is-invalid':'form-control'}"/>
+                            <label class="form-label">Apellido Tecnico</label>
+                            <input th:field="*{lastName}" type="text" class="form-control"
+                                   th:classappend="${#fields.hasErrors('lastName')?'is-invalid':''}"/>
                             <div class="invalid-feedback"
-                                 th:if="${#fields.hasErrors('unitsinstock')}" th:errors="*{unitsinstock}">
+                                 th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
                                 Mensaje de error de productName
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Unidades ordenadas</label>
-                            <input th:field="*{unitsonorder}" type="number" th:class="${#fields.hasErrors('unitsonorder')?'form-control is-invalid':'form-control'}"/>
+                            <label class="form-label">Dni</label>
+                            <input th:field="*{DNI}" type="text" th:class="${#fields.hasErrors('DNI')?'form-control is-invalid':'form-control'}"/>
                             <div class="invalid-feedback"
-                                 th:if="${#fields.hasErrors('unitsonorder')}" th:errors="*{unitsonorder}">
+                                 th:if="${#fields.hasErrors('DNI')}" th:errors="*{DNI}">
                                 Mensaje de error de productName
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Nivel de reorden</label>
-                            <input th:field="*{reorderlevel}" type="number" class="form-control"/>
+                            <label class="form-label">Telefono</label>
+                            <input th:field="*{phone}" type="text" th:class="${#fields.hasErrors('phone')?'form-control is-invalid':'form-control'}"/>
+                            <div class="invalid-feedback"
+                                 th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                                Mensaje de error de productName
+                            </div>
                         </div>
-                        <div class="form-check pb-2">
-                            <input th:checked="*{discontinued}" class="form-check-input" type="checkbox"
-                                   name="discontinued">
-                            <label class="form-check-label">¿Descontinuado?</label>
+                        <div class="mb-3">
+                            <label class="form-label">Edad</label>
+                            <input th:field="*{edad}" type="text" th:class="${#fields.hasErrors('edad')?'form-control is-invalid':'form-control'}"/>
+                            <div class="invalid-feedback"
+                                 th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">
+                                Mensaje de error de productName
+                            </div>
                         </div>
-                        <a th:href="@{'/product'}" class="btn btn-danger">Cancelar</a>
+                        <a th:href="@{'/tecnico'}" class="btn btn-danger">Cancelar</a>
                         <button type="submit" class="btn btn-primary"
-                                th:text="${product.id==0? 'Guardar':'Actualizar'}">Actualizar
+                                th:text="${tecnico.id==0? 'Guardar':'Actualizar'}">Actualizar
                         </button>
                     </form>
                 </div>
